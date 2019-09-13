@@ -1,7 +1,10 @@
-var request = require('request-promise');
 exports.discord_bot = function (message) {
+  var request = require('request-promise');
   var URL = process.env.GAS_ENDPOINT
   // help
+  var test = function () {
+    console.log("woihtegsr");
+  }
   var print_help = function () {
     message.channel.send("\
   ---  ヘルプ ---\n\
@@ -307,8 +310,7 @@ exports.discord_bot = function (message) {
     }
     // スプレッドシートキャプチャ
     else if (cb_command[1] === "capture") {
-      capture();
+      require("./module.js").capture({ "message": message });
     }
   }
 }
-

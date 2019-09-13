@@ -29,6 +29,9 @@ function doGet(e) {
   else if (e.parameter.mode == "updatecbstatus") {
     return api_update_cbstatus();
   }
+  else if (e.parameter.mode == "stepupcbdate") {
+    return api_stepup_cbdate();
+  }
 
   ////////////////////////////////////
   // クラバト開催状況設定＆レスポンス
@@ -171,12 +174,13 @@ function findRow2(sheet, val, col) {
 ////////////////////////////////////
 // クラバトの日数を進める（トリガー：5時）
 ////////////////////////////////////
-function stepup_cbdate() {
+function api_stepup_cbdate() {
   if (check_cbstatus()) {
     if (infosheet.getRange("B2").getValue() - infosheet.getRange("B1").getValue() ==0) {
       infosheet.getRange("B1").setValue(1); // 現在の開催日（x日目）
       //infosheet.getRange("B2").setValue(0); // 総開催日（合計日数）
       infosheet.getRange("B3").setValue(0); // 開催ステータス
+      hide_nocb_coulmn();
     }
     else {
       infosheet.getRange("B1").setValue(infosheet.getRange("B1").getValue() + 1);
