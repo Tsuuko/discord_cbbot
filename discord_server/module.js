@@ -4,6 +4,7 @@ exports.capture = function (args) {
     /////////////////////////////////
     // クラバトスプレッドシートキャプチャコマンド [capture]
     /////////////////////////////////
+    const CAPTURE_POST_TARGET = "623082136190320640"        // キャプチャ定期送信ターゲット（Channel ID）
     var options = {
         url: "http://api.screenshotlayer.com/api/capture",
         method: 'GET',
@@ -22,7 +23,7 @@ exports.capture = function (args) {
         .then(function (body) {
             console.log(args.client);
             if (args.client != null) {
-                args.client.channels.get("562846684158099478").send('', { file: { attachment: body } });
+                args.client.channels.get(CAPTURE_POST_TARGET).send('', { file: { attachment: body } });
             }
             else if (args.message != null) {
                 args.message.channel.send('', { file: { attachment: body } });
@@ -30,7 +31,7 @@ exports.capture = function (args) {
 
         })
         .catch(function (err) {
-            message.reply("error");
+            args.message.reply("error");
         });
 
 }
