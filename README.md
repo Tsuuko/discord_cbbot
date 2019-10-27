@@ -2,6 +2,9 @@
 
 クラバト凸管理用DiscordBOT
 
+ちょいちょい機能追加して仕様書はソースコードになりました<br>
+すまんです。。。
+
 - discord_server
   - DiscordBOTの本体です。
   - [Glitch](https://www.google.co.jp/)というサービスで動かしています。
