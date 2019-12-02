@@ -18,7 +18,7 @@
 
 環境変数に登録されている下記の情報を取得しています。
 
-```
+```python
 DISCORD_BOT_TOKEN=DiscordBOT作成時に発行されるトークン
 GAS_ENDPOINT=GASウェブアプリケーションURL
 SCREENSHOTLAYER_APIKEY=ScreenshotLayerのAPIキー（無料）
@@ -29,25 +29,10 @@ SPREADSHEET_ID=スプレッドシートのID
 
 一定時間アクセスがないとスリープしてしまうためUptimeRobotを使用して定期アクセスしてますが、自身からのGETリクエストでもスリープしないことを発見したので使わなくても解決できそうです。
 
-## GAS
+### GAS
 
 アクセス時のログイン要求をなくすために、GCEにプロジェクトを作ってAPIを許可、発行されたメールアドレスをスプレッドシートのアクセスできるユーザーに追加する必要があるかもしれないです（ないかも）
 
-
-# TODO
-
-- [x] 日付変更をGASのトリガーではなくBOT側で行うように変更
-  - node-cronというパッケージでできそう
-- [x] 定時にスプレッドシートのキャプチャを撮って送信
-  - 直接BOT側で撮ろうとすると日本語が文字化けするため[screenshotlayer](https://screenshotlayer.com)というサービスを利用
-- [x] ~~WakeLockをUptimeRobotに頼らずBOT自身で完結させる~~ 実験したら12時間ぐらいでスリープしてしまったので却下
-  - ~~BOTのLiveAppURLに定期的にBOTからGETリクエストを送ればいい~~
-  - ~~node-cronというパッケージでできそう~~
-- [ ] クラバトやってないときもキャプチャが毎日送信されないようにする
-  - GASのcheck_cbstatus()をAPIにしてキャプチャ実行前に確認する？
-- [ ] else ifいっぱいだからswitch文に書き直したい
-
-
-# MEMO
+## MEMO
 
 - 再利用できそうなコードにしたかったけど無理だった…
